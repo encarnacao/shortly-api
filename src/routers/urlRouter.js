@@ -2,6 +2,7 @@ import { postSchema } from "../schemas/schemas.js";
 import { validateRequest } from "../middlewares/validateSchemas.js";
 import { authorizeToken } from "../middlewares/authMiddlewares.js";
 import {
+	deleteUrl,
 	getUrlById,
 	openUrl,
 	shortenUrl,
@@ -23,5 +24,7 @@ router.post(
 router.get("/urls/:id", validateId, getUrlById);
 
 router.get("/urls/open/:shortUrl", validateShortUrl, openUrl);
+
+router.delete("/urls/:id", authorizeToken, validateId, deleteUrl);
 
 export default router;

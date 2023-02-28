@@ -32,7 +32,7 @@ async function getUrlById(_, res) {
 	}
 }
 
-async function openUrl(req, res) {
+async function openUrl(_, res) {
 	const { id, url } = res.locals.url;
 	try {
 		await db.query(
@@ -46,4 +46,24 @@ async function openUrl(req, res) {
 	}
 }
 
-export { shortenUrl, getUrlById, openUrl };
+async function deleteUrl(_, res) {
+	const { id } = res.locals.url;
+	const { userId } = res.locals.user;
+	try {
+		const { rows } = await db.query(
+			`SELECT * FROM "userLinks" WHERE "userId" = $1 AND "linkId" = $2`,
+			[userId, id]
+		);
+		if (rows.length === 0) {
+			return res.sendStatus(401);
+		}
+		await db.query(`DELETE FROM "userLinks" WHERE "linkId" = $1`, [id]);
+		await db.query(`DELETE FROM links WHERE id = $1`, [id]);
+		res.sendStatus(204);
+	} catch (e) {
+		console.log(e);
+		res.status(500).send("Internal Server Error");
+	}
+}
+
+export { shortenUrl, getUrlById, openUrl, deleteUrl };
