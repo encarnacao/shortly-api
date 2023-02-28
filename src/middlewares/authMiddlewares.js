@@ -38,6 +38,28 @@ async function authorizeLogin(req, res, next) {
 	}
 }
 
+async function authorizeToken(req, res, next) {
+	const { authorization } = req.headers;
+	if (!authorization) {
+		return res.status(401).send("Unauthorized");
+	}
+	try {
+		const token = authorization.replace("Bearer ", "");
+		const session = await db.query(
+			`SELECT * FROM sessions WHERE token = $1`,
+			[token]
+		);
+		if (session.rowCount === 0) {
+			return res.status(401).send("Unauthorized");
+		}
+		res.locals.user = session.rows[0];
+		next();
+	} catch (e) {
+		console.log(e);
+		res.status(500).send("Internal Server Error");
+	}
+}
+
 async function finishSession(_, res, next) {
 	const { id } = res.locals.user;
 	try {
@@ -49,4 +71,4 @@ async function finishSession(_, res, next) {
 	}
 }
 
-export { singUpConflict, authorizeLogin, finishSession };
+export { singUpConflict, authorizeLogin, finishSession, authorizeToken };
