@@ -22,17 +22,10 @@ async function shortenUrl(req, res) {
 	}
 }
 
-async function getUrlById(req, res) {
-	const { id } = req.params;
+async function getUrlById(_, res) {
 	try {
-		const { rows } = await db.query(
-			`SELECT id,"shortUrl",url FROM links WHERE id = $1`,
-			[id]
-		);
-		if (rows.length === 0) {
-			return res.status(404).send("Not Found");
-		}
-		res.status(200).send(rows[0]);
+		const body = res.locals.url;
+		res.status(200).send(body);
 	} catch (e) {
 		console.log(e);
 		res.status(500).send("Internal Server Error");
