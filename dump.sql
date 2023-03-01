@@ -29,7 +29,7 @@ CREATE TABLE public.links (
     url text NOT NULL,
     "shortUrl" character varying(8) NOT NULL,
     "visitCount" integer DEFAULT 0 NOT NULL,
-    "createdAt" timestamp without time zone DEFAULT '2023-03-01 11:28:38.183276'::timestamp without time zone NOT NULL
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -61,7 +61,7 @@ CREATE TABLE public.sessions (
     id integer NOT NULL,
     "userId" integer NOT NULL,
     token character varying(36) NOT NULL,
-    "createdAt" timestamp without time zone DEFAULT '2023-03-01 11:28:38.164615'::timestamp without time zone NOT NULL
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -93,7 +93,7 @@ CREATE TABLE public."userLinks" (
     id integer NOT NULL,
     "userId" integer NOT NULL,
     "linkId" integer NOT NULL,
-    "createdAt" timestamp without time zone DEFAULT '2023-03-01 11:28:38.202863'::timestamp without time zone NOT NULL
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -126,7 +126,7 @@ CREATE TABLE public.users (
     email character varying(60) NOT NULL,
     password character varying(60) NOT NULL,
     name character varying(50) NOT NULL,
-    "createdAt" timestamp without time zone DEFAULT '2023-03-01 11:28:38.140232'::timestamp without time zone NOT NULL
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -182,34 +182,34 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: links; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.links VALUES (1, 'https://pbs.twimg.com/media/FpfqFNaXwAIHa1U?format=jpg&name=4096x4096', 'x_lQ2wX8', 3, '2023-03-01 11:28:38.183276');
-INSERT INTO public.links VALUES (2, 'https://github.com/encarnacao/shortly-api', 'JpeY5CEj', 2, '2023-03-01 11:28:38.183276');
-INSERT INTO public.links VALUES (3, 'https://github.com/encarnacao/', 'TZKBS3nD', 7, '2023-03-01 11:28:38.183276');
+INSERT INTO public.links VALUES (1, 'https://github.com/encarnacao/', 'iQy_L7fP', 6, '2023-03-01 11:35:32.579369');
+INSERT INTO public.links VALUES (2, 'https://github.com/encarnacao/', '8b0_C9lE', 3, '2023-03-01 11:36:05.228545');
+INSERT INTO public.links VALUES (3, 'https://github.com/encarnacao/', 'KsEeSZeU', 2, '2023-03-01 11:36:14.783019');
 
 
 --
 -- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.sessions VALUES (1, 1, '041a4d96-8bde-4edc-b815-639c7d8f0be3', '2023-03-01 11:28:38.164615');
-INSERT INTO public.sessions VALUES (2, 2, '0d43d86b-c20e-43c7-abd2-8b8caee48316', '2023-03-01 11:28:38.164615');
+INSERT INTO public.sessions VALUES (1, 1, '18dcbd72-a3a6-457f-9e09-4656223ef9db', '2023-03-01 11:35:22.811849');
+INSERT INTO public.sessions VALUES (2, 2, 'fa58fe14-55d4-41a5-b811-aa8444c523e2', '2023-03-01 11:35:56.409267');
 
 
 --
 -- Data for Name: userLinks; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public."userLinks" VALUES (1, 1, 1, '2023-03-01 11:28:38.202863');
-INSERT INTO public."userLinks" VALUES (2, 1, 2, '2023-03-01 11:28:38.202863');
-INSERT INTO public."userLinks" VALUES (3, 2, 3, '2023-03-01 11:28:38.202863');
+INSERT INTO public."userLinks" VALUES (1, 1, 1, '2023-03-01 11:35:32.583938');
+INSERT INTO public."userLinks" VALUES (2, 2, 2, '2023-03-01 11:36:05.23228');
+INSERT INTO public."userLinks" VALUES (3, 2, 3, '2023-03-01 11:36:14.786786');
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.users VALUES (1, 'caio@caio.com', '$2b$10$BGGyrhCp50IGIQAiPko5BupHRRMnRW0fFTWKZdVjf5h3u9ykn8l6O', 'Caio', '2023-03-01 11:28:38.140232');
-INSERT INTO public.users VALUES (2, 'teste@teste.com', '$2b$10$2h4ox6FpvrECdOL7A5JcUuLJImsQQlFZcT3RihUuG8qrNYg1UlOvO', 'Teste', '2023-03-01 11:28:38.140232');
+INSERT INTO public.users VALUES (1, 'teste@teste.com', '$2b$10$YkD7wblx8AHXe/TF2E.G/eY1zdxQh2fL9Py/7qyCYHVTCVTek6LL.', 'Teste', '2023-03-01 11:35:05.775768');
+INSERT INTO public.users VALUES (2, 'caio@caio.com', '$2b$10$4D1PDDXWFPzKTrEjGfmAS.spYC.EWA7RrxgsP4hYDHMp/j4X84YpK', 'Caio', '2023-03-01 11:35:18.768971');
 
 
 --
