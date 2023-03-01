@@ -15,7 +15,7 @@ app.use(urlRouter);
 app.use(userRouter);
 
 app.get("/", (_, res) => {
-	res.send("Hello World!");
+	res.send("Hello World!, your server is running, database url: " + process.env.DATABASE_URL);
 });
 
 app.listen(process.env.PORT, () => {
