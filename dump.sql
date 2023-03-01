@@ -29,7 +29,7 @@ CREATE TABLE public.links (
     url text NOT NULL,
     "shortUrl" character varying(8) NOT NULL,
     "visitCount" integer DEFAULT 0 NOT NULL,
-    "createdAt" date DEFAULT '2023-02-28'::date NOT NULL
+    "createdAt" timestamp without time zone DEFAULT '2023-03-01 11:28:38.183276'::timestamp without time zone NOT NULL
 );
 
 
@@ -61,7 +61,7 @@ CREATE TABLE public.sessions (
     id integer NOT NULL,
     "userId" integer NOT NULL,
     token character varying(36) NOT NULL,
-    "createdAt" date DEFAULT '2023-02-28'::date NOT NULL
+    "createdAt" timestamp without time zone DEFAULT '2023-03-01 11:28:38.164615'::timestamp without time zone NOT NULL
 );
 
 
@@ -93,7 +93,7 @@ CREATE TABLE public."userLinks" (
     id integer NOT NULL,
     "userId" integer NOT NULL,
     "linkId" integer NOT NULL,
-    "createdAt" date DEFAULT '2023-02-28'::date NOT NULL
+    "createdAt" timestamp without time zone DEFAULT '2023-03-01 11:28:38.202863'::timestamp without time zone NOT NULL
 );
 
 
@@ -126,7 +126,7 @@ CREATE TABLE public.users (
     email character varying(60) NOT NULL,
     password character varying(60) NOT NULL,
     name character varying(50) NOT NULL,
-    "createdAt" date DEFAULT '2023-02-28'::date NOT NULL
+    "createdAt" timestamp without time zone DEFAULT '2023-03-01 11:28:38.140232'::timestamp without time zone NOT NULL
 );
 
 
@@ -182,59 +182,55 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: links; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.links VALUES (12, 'https://pbs.twimg.com/profile_images/1512280642263920640/ymvgzZIc_400x400.jpg', 'lBDfb7FQ', 0, '2023-02-28');
-INSERT INTO public.links VALUES (13, 'https://pbs.twimg.com/media/FqAjr-tXoAIgUIP?format=png&name=small', 'uvboOugm', 0, '2023-02-28');
-INSERT INTO public.links VALUES (14, 'https://pbs.twimg.com/media/FpiEM3eXwAAbZIs?format=png&name=small', 'eDDHgoZO', 0, '2023-02-28');
-INSERT INTO public.links VALUES (11, 'https://sm.ign.com/t/ign_br/news/s/sonic-cent/sonic-central-2022-everything-announced-including-sonic-prim_ed6t.h720.jpg', '8tBJRGs2', 1, '2023-02-28');
-INSERT INTO public.links VALUES (15, 'https://pbs.twimg.com/media/FpfqFNaXwAIHa1U?format=jpg&name=4096x4096', 'azBoPXxH', 2, '2023-02-28');
+INSERT INTO public.links VALUES (1, 'https://pbs.twimg.com/media/FpfqFNaXwAIHa1U?format=jpg&name=4096x4096', 'x_lQ2wX8', 3, '2023-03-01 11:28:38.183276');
+INSERT INTO public.links VALUES (2, 'https://github.com/encarnacao/shortly-api', 'JpeY5CEj', 2, '2023-03-01 11:28:38.183276');
+INSERT INTO public.links VALUES (3, 'https://github.com/encarnacao/', 'TZKBS3nD', 7, '2023-03-01 11:28:38.183276');
 
 
 --
 -- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.sessions VALUES (5, 2, '2b58b6b8-eb98-4512-af36-36cac38670e8', '2023-02-28');
-INSERT INTO public.sessions VALUES (6, 1, '5675f252-3fbb-4dbf-84c3-b61060834d56', '2023-02-28');
+INSERT INTO public.sessions VALUES (1, 1, '041a4d96-8bde-4edc-b815-639c7d8f0be3', '2023-03-01 11:28:38.164615');
+INSERT INTO public.sessions VALUES (2, 2, '0d43d86b-c20e-43c7-abd2-8b8caee48316', '2023-03-01 11:28:38.164615');
 
 
 --
 -- Data for Name: userLinks; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public."userLinks" VALUES (10, 2, 11, '2023-02-28');
-INSERT INTO public."userLinks" VALUES (11, 1, 12, '2023-02-28');
-INSERT INTO public."userLinks" VALUES (12, 1, 13, '2023-02-28');
-INSERT INTO public."userLinks" VALUES (13, 1, 14, '2023-02-28');
-INSERT INTO public."userLinks" VALUES (14, 2, 15, '2023-02-28');
+INSERT INTO public."userLinks" VALUES (1, 1, 1, '2023-03-01 11:28:38.202863');
+INSERT INTO public."userLinks" VALUES (2, 1, 2, '2023-03-01 11:28:38.202863');
+INSERT INTO public."userLinks" VALUES (3, 2, 3, '2023-03-01 11:28:38.202863');
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.users VALUES (1, 'caio@caio.com', '$2b$10$T9fwifWSr4pNESzVkq2jHe4GjzgZWDhue4Eq5mJ7RMG5w6o6yeNGi', 'Caio', '2023-02-28');
-INSERT INTO public.users VALUES (2, 'caiao@caio.com', '$2b$10$.7FHPt4tlF5eo/nPl.lk..mVw2MBj3/2KVM4MzIB2CJVymyCofAcW', 'Caiao', '2023-02-28');
+INSERT INTO public.users VALUES (1, 'caio@caio.com', '$2b$10$BGGyrhCp50IGIQAiPko5BupHRRMnRW0fFTWKZdVjf5h3u9ykn8l6O', 'Caio', '2023-03-01 11:28:38.140232');
+INSERT INTO public.users VALUES (2, 'teste@teste.com', '$2b$10$2h4ox6FpvrECdOL7A5JcUuLJImsQQlFZcT3RihUuG8qrNYg1UlOvO', 'Teste', '2023-03-01 11:28:38.140232');
 
 
 --
 -- Name: links_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.links_id_seq', 15, true);
+SELECT pg_catalog.setval('public.links_id_seq', 3, true);
 
 
 --
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 6, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 2, true);
 
 
 --
 -- Name: userLinks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."userLinks_id_seq"', 14, true);
+SELECT pg_catalog.setval('public."userLinks_id_seq"', 3, true);
 
 
 --
