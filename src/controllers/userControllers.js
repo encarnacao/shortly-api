@@ -12,7 +12,7 @@ async function getMyUser(_, res) {
                 'id', links.id, 
                 'shortUrl', links."shortUrl", 
                 'url', links."url", 
-                'visitCount', links."visitCount") ORDER BY links.id) AS shortenedUrls
+                'visitCount', links."visitCount") ORDER BY links.id) AS "shortenedUrls"
             FROM 
                 users
                 JOIN "userLinks" ON "userLinks"."userId" = users.id
