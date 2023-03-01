@@ -21,6 +21,7 @@
   "homepage": "https://github.com/encarnacao/shortly-api#readme",
   "dependencies": {
     "@joi/date": "^2.1.0",
+    "@vercel/node": "^2.9.10",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dayjs": "^1.11.7",
