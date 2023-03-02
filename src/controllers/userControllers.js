@@ -15,8 +15,8 @@ async function getMyUser(_, res) {
                 'visitCount', links."visitCount") ORDER BY links.id) AS "shortenedUrls"
             FROM 
                 users
-                JOIN "userLinks" ON "userLinks"."userId" = users.id
-                JOIN links ON "userLinks"."linkId" = links.id
+                LEFT JOIN "userLinks" ON "userLinks"."userId" = users.id
+                LEFT JOIN links ON "userLinks"."linkId" = links.id
             WHERE
                 users.id = $1
             GROUP BY users.id 
