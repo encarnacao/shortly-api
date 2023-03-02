@@ -21,7 +21,7 @@ async function singUp(req, res) {
 }
 
 async function signIn(_, res) {
-	const { id } = res.locals.user;
+	const { id, name } = res.locals.user;
 	try {
 		const token = v4();
 		const insert = await db.query(
@@ -31,7 +31,7 @@ async function signIn(_, res) {
 		if (insert.rowCount === 0) {
 			return res.status(400).send("Bad Request");
 		}
-		res.status(200).send({ token });
+		res.status(200).send({ id, name, token });
 	} catch (e) {
 		console.log(e);
 		res.status(500).send("Internal Server Error");
